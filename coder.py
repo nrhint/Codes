@@ -68,3 +68,9 @@ class shifter:
             else:
                 output += char
         print(output)
+class piCode:
+    def __init__(self):
+        self.pi = int(open('pi', 'r').read())
+    def encode():
+        message = input("Message: ")
+        
