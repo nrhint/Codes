@@ -10,11 +10,9 @@ with open(dictPath) as file:
     dictionary = []
     for word in d:
         dictionary.append(word.lower())
-        
-
-print('%s words found in dictionary file.'%len(dictionary))
-
-def find(term):
+    print('%s words found in dictionary file.'%len(dictionary))
+def find(term, exempt=[]):
+    
     search = term.lower()
     searchLength = 0
     searchLst = []
@@ -29,8 +27,6 @@ def find(term):
             searchLst.append(str(char))
         else:
             print("ERROR! Unrecognized characater found when parsing input!")
-        
-
     print('Begining search for %s'%search)
     searchWords = []
     print('filtering by length...')
@@ -44,14 +40,30 @@ def find(term):
     options = []
     for word in searchWords:
         yes = True
-        ltr = False
+        ltrA = False
+        ltrB = False
+        ltrC = False
         for x in range(0, searchLength):
             if search[x] == '?':
                 pass
-            elif search[x] == '!':
-                if ltr == False:
-                    ltr = word[x]
-                elif ltr == word[x]:
+            elif search[x] == 'A':
+                if ltrA == False:
+                    ltrA = word[x]
+                elif ltrA == word[x]:
+                    pass
+                else:
+                    yes = False
+            elif search[x] == 'B':
+                if ltrB == False:
+                    ltrB = word[x]
+                elif ltrB == word[x]:
+                    pass
+                else:
+                    yes = False
+            elif search[x] == 'C':
+                if ltrC == False:
+                    ltrC = word[x]
+                elif ltrC == word[x]:
                     pass
                 else:
                     yes = False
@@ -60,9 +72,11 @@ def find(term):
                     pass
                 else:
                     yes = False
+        for char in exempt:
+            if char in word:
+                yes = False
         if yes == True:
             options.append(word)
-
     print()
     print()
     print()
