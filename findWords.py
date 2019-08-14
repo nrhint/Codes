@@ -11,7 +11,7 @@ with open(dictPath) as file:
     for word in d:
         dictionary.append(word.lower())
     print('%s words found in dictionary file.'%len(dictionary))
-def find(term, exempt=[]):
+def findOld(term, exempt=[]):
     
     search = term.lower()
     searchLength = 0
@@ -109,3 +109,23 @@ def compare(word1, word2):
                 print(word)
                 printList(wds)
         pos +=1
+
+def searchDict(chars):
+    output = []
+    for word in dictionary:
+        if chars in word:
+            output.append(word)
+    return output
+
+def find(searchTerm, exempt = []):
+    if '*' in searchTerm:
+        search = searchTerm.split('*')
+        for chars in search:
+            if chars == []:
+                search.remove[[]]
+            else:
+                options = searchDict(chars)
+    for word in options:
+        pass
+    
+find('strin*')
