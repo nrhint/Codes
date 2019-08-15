@@ -1,7 +1,10 @@
 ##Nathan Hinton
 #For finding words
+from time import time
+start = time()
 
 from string import ascii_lowercase as alpha
+
 
 print('Loading the dictionarry...')
 dictPath = 'englishDict/english-words-master/words_alpha.txt'
@@ -12,7 +15,6 @@ with open(dictPath) as file:
         dictionary.append(word.lower())
     print('%s words found in dictionary file.'%len(dictionary))
 def findOld(term, exempt=[]):
-    
     search = term.lower()
     searchLength = 0
     searchLst = []
@@ -109,7 +111,6 @@ def compare(word1, word2):
                 print(word)
                 printList(wds)
         pos +=1
-
 def searchDict(chars):
     output = []
     for word in dictionary:
@@ -126,19 +127,16 @@ def find(searchTerm, exempt = []):
             terms.append(term)
     options = []
     for term in terms:
-        options.append(searchDict(term))
+        options += (searchDict(term))
+    print(len(options))
     for word in options:
         for term in terms:
-            if term in word:
-                pass
-            else:
-                print(word)
-    if exempt != []:
-        for word in options:
-            for char in exempt:
-                if char in word:
-                    options.remove(word)
+            if term not in word:
+                options.remove(word)
     return options
                     
     
-find('st*in')
+o = find('serin*ious')
+
+end = time()
+print("Program took %s seconds."%(end-start))
