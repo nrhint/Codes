@@ -118,14 +118,27 @@ def searchDict(chars):
     return output
 
 def find(searchTerm, exempt = []):
-    if '*' in searchTerm:
-        search = searchTerm.split('*')
-        for chars in search:
-            if chars == []:
-                search.remove[[]]
-            else:
-                options = searchDict(chars)
+    terms = []
+    for term in searchTerm.split('*'):#Filter the search term:
+        if term == []:
+            pass
+        else:
+            terms.append(term)
+    options = []
+    for term in terms:
+        options.append(searchDict(term))
     for word in options:
-        pass
+        for term in terms:
+            if term in word:
+                pass
+            else:
+                print(word)
+    if exempt != []:
+        for word in options:
+            for char in exempt:
+                if char in word:
+                    options.remove(word)
+    return options
+                    
     
-find('strin*')
+find('st*in')
