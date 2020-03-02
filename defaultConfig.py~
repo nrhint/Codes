@@ -1,0 +1,8 @@
+#Nathan Hinton
+#The '#' at the begining of the line is a comment
+#This is the default file
+
+#This is an example menu for opening a file:
+filemenu = Menu(root)
+root.config(menu = menu)
+menu.add_cascade(label="File", menu=filemenu)

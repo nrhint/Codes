@@ -1,0 +1,3 @@
+filemenu = Menu(self.root)
+self.root.config(menu = menu)
+menu.add_cascade(label="file", menu = filemenu)
