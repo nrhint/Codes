@@ -136,7 +136,7 @@ def find(searchTerm, exempt = []):
     return options
                     
     
-o = find('serin*ious')
+o = findOld('octo????')
 
 end = time()
 print("Program took %s seconds."%(end-start))

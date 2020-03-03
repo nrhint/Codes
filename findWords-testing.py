@@ -8,7 +8,7 @@ from string import ascii_lowercase as alpha
 
 
 print('Loading the dictionarry...')
-dictPath = 'englishDict/english-words-master/words_alpha.txt'
+dictPath = './englishDict/english-words-master/words_alpha.txt'
 with open(dictPath) as file:
     d = file.read().split()
     dictionary = []
@@ -19,14 +19,19 @@ with open(dictPath) as file:
 
 
 def find(searchTerm):
-    terms = searchTerm.split('*')#This is a really general thing. it assumes a * at the begining and the end of the search term.
+    terms = searchTerm.split('*')#This is a really general thing. it assumes a * at the end of the search term.
     possiblties = []
     for word in dictionary:
         lastIndex = 0
+        maybe = 1
         for term in terms:#This lacks checking to see if it matches the order of the input.
             if term in word:
-                if word.index(term) >= lastIndex:
-                    possiblties.append(word)
+                if word.index(term) > lastIndex:
                     lastIndex = word.index(term)
-    print(possiblties)
+                    maybe += 1
+            else:
+                break
+            if maybe == len(terms):
+                possiblties.append(word)
+##    print(possiblties)
     return possiblties
