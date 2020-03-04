@@ -8,7 +8,8 @@ from string import ascii_lowercase as alpha
 
 
 print('Loading the dictionarry...')
-dictPath = './englishDict/english-words-master/words_alpha.txt'
+#dictPath = './englishDict/english-words-master/words_alpha.txt'
+dictPath = '/home/nathan/Desktop/enwiktionary-latest-all-titles-in-ns0'
 with open(dictPath) as file:
     d = file.read().split()
     dictionary = []
